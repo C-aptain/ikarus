@@ -1,8 +1,18 @@
-let express = require('express')
-let app = express()
+var express = require('express');
+var app = express();
 
-app.get('/', (req, res) => {
-  res.send('hello world')
-})
- 
-app.listen(3000)
+app.use(express.static('client'));
+
+app.get('/items', function(req, res) {
+  res.json([
+    {name: 'itemName'}
+  ]);
+});
+
+app.get('/companies', function(req, res) {
+  res.json([
+    {name: 'companyName'}
+  ]);
+});
+
+app.listen(3000);
