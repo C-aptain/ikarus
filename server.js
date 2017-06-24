@@ -1,18 +1,20 @@
-var express = require('express');
-var app = express();
+const express     = require('express')
+const MongoClient = require('mongodb').MongoClient
+const bodyParser  = require('body-parser')
+const app = express()
+const port = 1337
 
-app.use(express.static('client'));
+app.use(express.static('client'))
 
-app.get('/items', function(req, res) {
+app.get('/contacts', (req, res) => {
   res.json([
-    {name: 'itemName'}
-  ]);
-});
+    {
+      name: 'contactName',
+      type: 'person',
+    }
+  ])
+})
 
-app.get('/companies', function(req, res) {
-  res.json([
-    {name: 'companyName'}
-  ]);
-});
-
-app.listen(3000);
+app.listen(port, () => {
+  console.log(`Server is live at ${port}`)
+})

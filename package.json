@@ -4,19 +4,24 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/C-aptain/ikarus.git"
+    "url": "git+https://github.com/C-aptain/sample.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/C-aptain/ikarus/issues"
+    "url": "https://github.com/C-aptain/sample/issues"
   },
-  "homepage": "https://github.com/C-aptain/ikarus#readme",
+  "homepage": "https://github.com/C-aptain/sample#readme",
   "dependencies": {
-    "express": "^4.15.3"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongodb": "^2.2.28"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
