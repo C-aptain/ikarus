@@ -1,20 +1,23 @@
-const express     = require('express')
+const express = require('express')
 const MongoClient = require('mongodb').MongoClient
-const bodyParser  = require('body-parser')
+const bodyParser = require('body-parser')
+const db = require('./config/db')
 const app = express()
 const port = 1337
 
-app.use(express.static('client'))
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.static('./app/static'))
 
-app.get('/contacts', (req, res) => {
-  res.json([
-    {
-      name: 'contactName',
-      type: 'person',
-    }
-  ])
-})
+MongoClient.connect(db.url, (err, database) => {
+  if (err) {
+    console.log(err)
 
-app.listen(port, () => {
-  console.log(`Server is live at ${port}`)
+    return
+  }
+
+  require('./app/routes')(app, database)
+
+  app.listen(port, () => {
+    console.log(`Server is live at ${port}`)
+  })
 })
