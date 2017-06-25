@@ -3,7 +3,7 @@ const MongoClient = require('mongodb').MongoClient
 const bodyParser = require('body-parser')
 const db = require('./config/db')
 const app = express()
-const port = 1337
+const port = process.env.PORT || 1337
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static('./app/static'))
